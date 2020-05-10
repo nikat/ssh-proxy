@@ -1,6 +1,8 @@
-# ssh-proxy is Dockerized SSH server for SOCKS5 proxy
+# ssh-proxy
 
-### While at home
+**ssh-proxy** is a dockerized SSH server for SOCKS5 proxy
+
+## Quickstart
 
 ### at client.example.com
 
