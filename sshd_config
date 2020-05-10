@@ -1,0 +1,4 @@
+LogLevel INFO
+AuthorizedKeysFile keys
+PasswordAuthentication no
+PermitTTY no
