@@ -1,11 +1,38 @@
-# ssh-proxy
-SSH server for socks proxy
+# ssh-proxy is Dockerized SSH server for SOCKS5 proxy
 
-1) install docker
-2) add your keys to authorized_keys
-3) ./run.sh build
-4) ./run.sh up
+## at client.example.com
+1) Install Docker
 
-from local host:
-ssh -D 127.0.0.1:11050 -N -p 8833 user@HOST
-curl -I --socks5-hostname 127.0.0.1:11050 https://example.com
+2) Clone
+  git clone https://github.com/nikat/ssh-proxy-client.git
+  cd ssh-proxy-client
+  cp ssh_config.sample ssh_config
+  
+3) Set server hostname in ssh_config
+  Hostname server.example.com
+
+5) Create the keys
+  ssh-keygen -b 2048 -t rsa -f ./id_rsa -q -N ""
+  
+## at *server.example.com*
+1) Install Docker
+
+2) Clone
+  git clone https://github.com/nikat/ssh-proxy.git
+  cd ssh-proxy
+
+3) Populate the *authorized*_keys file
+Copy from client.example.com:~/ssh-proxy-client/id_rsa.pub
+Append to server.example.com:~/ssh-proxy/authorized_keys
+Repeat if there are other clients.
+ 
+4) Run the server
+  ./run.sh up
+
+## at client.example.com
+1) Run the client
+  ./run.sh up
+
+2) Check the proxy
+This should return server's ip address
+  curl --socks5-hostname 127.0.0.1:11050 ifconfig.me
