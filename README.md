@@ -7,5 +7,5 @@ SSH server for socks proxy
 4) ./run.sh up
 
 from local host:
-ssh -D 127.0.0.1:11050 -N -p 8833 user@<HOST>
-url -I --socks5-hostname localhost:11050 https://example.com
+ssh -D 127.0.0.1:11050 -N -p 8833 user@HOST
+curl -I --socks5-hostname 127.0.0.1:11050 https://example.com
